@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(90deg, #34495e, #2c3e50);
+            padding: 0.5em;
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 0 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a#login-signup {
+            color: #333; /* Update color for better visibility */
+        }
+
+        nav a:hover,
+        nav a#login-signup:hover {
+            background-color: #555;
+        }
+
+        section {
+            padding: 2em;
+            text-align: center;
+            margin-top: 120px;
+            color: #fff; /* Set the text color to white */
+        }
+
+        footer {
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px; /* Adjust spacing as needed */
+        }
+
+        .dropdown a {
+            color: #fff; /* Dropdown text color */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover,
+        .dropdown.show .dropdown-content a:hover {
+            background-color: #555; /* Hover background color */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: linear-gradient(90deg, #2c3e50, #34495e);/* Dropdown background color */
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #fff; /* Dropdown item text color */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        .animated-text-container {
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .animated-text {
+            color: #fff; /* Text color */
+            position: relative;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideInText 1s ease-in-out forwards;
+        }
+
+        @keyframes slideInText {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Remove list-style (dots) from ul */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Add margin-top to create space between footer and gif */
+        #illustration {
+            margin-bottom: 50px;
+        }
+
+        /* Custom styles for enhanced section content */
+        .feature {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .feature img {
+            width: 120px;
+            height: 120px;
+            margin-right: 30px;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite alternate;
+        }
+
+        .feature p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .feature:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .feature:nth-child(even) img {
+            margin-left: 30px;
+            margin-right: 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Online Examination System</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="about us.html">About</a>
+        <a href="#">Services</a>
+        <div class="dropdown" id="loginDropdown">
+            <a href="#" onclick="toggleDropdown()">Login / Signup</a>
+            <div class="dropdown-content">
+                <a href="login.html">Student Login</a>
+                <a href="instructorlogin.html">Instructor Login</a>
+                <a href="#">Admin Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="animated-text-container">
+            <h2 class="animated-text">Empowering minds with Online Examination System</h2>
+        </div>
+        <div class="feature">
+            <img src="feature1.png" alt="Feature 1">
+            <p>Randomized question sets to ensure fairness and integrity. Our system generates unique sets of questions for each exam, enhancing security and reliability.</p>
+        </div>
+        <div class="feature">
+            <img src="feature2.png" alt="Feature 2">
+            <p>Instant and accurate result processing. Receive your exam results instantly with our advanced system, ensuring timely feedback and progress tracking.</p>
+        </div>
+        <div class="feature">
+            <img src="feature3.png" alt="Feature 3">
+            <p>Efficient and paperless examination environment. Embrace sustainability and efficiency with our digital exam platform, eliminating the need for paper-based assessments.</p>
+        </div>
+        <div class="feature">
+            <img src="feature4.png" alt="Feature 4">
+            <p>Customizable assessments with various question formats. Tailor your exams to suit your needs with our versatile assessment options, including multiple-choice, essay, and more.</p>
+        </div>
+        <div class="feature">
+            <img src="feature5.png" alt="Feature 5">
+            <p>Accessibility and flexibility for remote assessments. Take exams from anywhere, anytime with our user-friendly interface and remote proctoring capabilities, ensuring equal opportunities for all.</p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 @OES. All rights reserved.
+    </footer>
+    <script>
+               document.addEventListener('DOMContentLoaded', function () {
+            var animatedText = document.querySelector('.animated-text');
+            var section = document.querySelector('section');
+    
+            // Function to add animation class
+            function addAnimation() {
+                animatedText.classList.add('animate');
+            }
+    
+            // Trigger animation on page load
+            addAnimation();
+    
+            // Trigger animation while scrolling
+            window.addEventListener('scroll', function () {
+                var sectionPosition = section.getBoundingClientRect().top;
+                var screenPosition = window.innerHeight;
+    
+                if (sectionPosition < screenPosition) {
+                    addAnimation();
+                }
+            });
+    
+            // Toggle dropdown when clicking on "Login / Signup"
+            document.getElementById('loginDropdown').addEventListener('click', function (event) {
+                var dropdownContent = document.querySelector('.dropdown-content');
+                if (dropdownContent.style.display === "none" || dropdownContent.style.display === "") {
+                    dropdownContent.style.display = "block";
+                } else {
+                    dropdownContent.style.display = "none";
+                }
+                event.stopPropagation(); // Prevent event bubbling
+            });
+    
+            // Close dropdown when clicking anywhere on the page outside of it
+            document.body.addEventListener('click', function (event) {
+                var dropdownContent = document.querySelector('.dropdown-content');
+                if (!event.target.closest('.dropdown') && dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
