@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Exam Type</title>
+    <style>
+        /* Paste the CSS styles from homepage.html here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(90deg, #34495e, #2c3e50);
+            padding: 0.5em;
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 0 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a#login-signup {
+            color: #333;
+        }
+
+        nav a:hover,
+        nav a#login-signup:hover {
+            background-color: #555;
+        }
+
+        section {
+             padding: 2em;
+             text-align: center;
+             margin-top: 120px;
+             color: #fff;
+             padding-bottom: calc(50px + 1em);
+       }
+
+        footer {
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .dropdown a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover,
+        .dropdown.show .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        .animated-text-container {
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .animated-text {
+            color: #fff;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideInText 1s ease-in-out forwards;
+        }
+
+        @keyframes slideInText {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #illustration {
+            margin-bottom: 50px;
+        }
+
+        .feature {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .feature img {
+            width: 120px;
+            height: 120px;
+            margin-right: 30px;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite alternate, slideInImage 1s ease-in-out forwards;
+        }
+
+        .feature p {
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            color: #fff;
+            border-radius: 15px;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .feature p:hover {
+            transform: translateY(-3px);
+            border-color: #ff8a00;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes slideInImage {
+            0% {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        button {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #34495e;
+        }
+
+        /* Adjust padding and margin for about us link */
+     /* Adjust padding and margin for about us link */
+nav a:nth-child(2) {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 15px; /* Adjust padding for better appearance */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Online Examination System</h1>
+    </header>
+
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="#">Services</a>       
+    </nav>
+
+    <section>
+        <div class="animated-text-container">
+            <h2 class="animated-text">Select Exam Type</h2>
+        </div>
+        <ul>
+            <li>
+                <a href="multiple_choice.html" style="text-decoration: none;">
+                    <div class="feature">
+                        <img src="multiple_choice_image.jpg" alt="Multiple Choice Questions">
+                        <p>Multiple Choice Questions</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="essay.html" style="text-decoration: none;">
+                    <div class="feature">
+                        <img src="essay_image.jpg" alt="Essay Exams">
+                        <p>Essay Exams</p>
+                    </div>
+                </a>
+            </li>            
+        </ul>
+    </section>
+
+    <footer>
+        &copy; 2024 @OES. All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('loginSignup').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default anchor tag behavior
+                var dropdownContent = document.querySelector('.dropdown-content');
+                if (dropdownContent.style.display === "none" || dropdownContent.style.display === "") {
+                    dropdownContent.style.display = "block";
+                } else {
+                    dropdownContent.style.display = "none";
+                }
+                event.stopPropagation(); // Prevent event bubbling
+            });
+
+            document.body.addEventListener('click', function (event) {
+                var dropdownContent = document.querySelector('.dropdown-content');
+                if (!event.target.closest('.dropdown') && dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
