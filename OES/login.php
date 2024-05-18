@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result && $result->num_rows > 0) {
             $_SESSION['username'] = $username;
-            header("Location: homepage.html");
+            header("Location: getstarted.html");
             exit();
         } else {
             echo "<script>alert('Invalid username or password');</script>";
