@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Examination System - View Student Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .result-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result-form input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .result-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result-display p {
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <form action="result.php" method="post">
+    <div class="container">
+        <h1>Online Examination System</h1>
+        <h2>View Student Results</h2>
+        <div class="result-form">
+            <label for="studentId">Enter Username:</label>
+            <input type="text" id="studentId" placeholder="Student Username">
+            <button onclick="viewResult()">View Result</button>
+        </div>
+        <div id="result" class="result-display">
+            <!-- Result will be displayed here -->
+        </div>
+    </div>
+</form>
+    <script>
+        function viewResult() {
+            var studentId = document.getElementById('studentId').value;
+            var resultDiv = document.getElementById('result');
+
+            // Placeholder data for demonstration purposes
+            var results = {
+                '12345': {
+                    name: 'John Doe',
+                    exams: [
+                        {
+                            type: 'Multiple Choice',
+                            score: '85'
+                        },
+                        {
+                            type: 'Essay',
+                            score: '78'
+                        }
+                    ]
+                },
+                '67890': {
+                    name: 'Jane Smith',
+                    exams: [
+                        {
+                            type: 'True or False',
+                            score: '92'
+                        },
+                        {
+                            type: 'Fill in the Blanks',
+                            score: '88'
+                        }
+                    ]
+                }
+            };
+
+            if (results[studentId]) {
+                var studentResult = results[studentId];
+                var resultHTML = `<p>Student Name: ${studentResult.name}</p>`;
+                studentResult.exams.forEach(exam => {
+                    resultHTML += `
+                        <p>Exam Type: ${exam.type}</p>
+                        <p>Subject: ${exam.subject}</p>
+                        <p>Score: ${exam.score}</p>
+                        <hr>
+                    `;
+                });
+                resultDiv.innerHTML = resultHTML;
+            } else {
+                resultDiv.innerHTML = `<p>No results found for Student ID: ${studentId}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
